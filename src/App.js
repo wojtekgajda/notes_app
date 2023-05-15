@@ -2,7 +2,11 @@ import {Footer} from "./components/Footer";
 import {Header} from "./components/Header";
 import {Note} from "./components/Note";
 import {CreateNote} from "./components/CreateNote";
-import {useState} from "react";
+import {useState, useEffect} from "react";
+import axios from 'axios';
+
+
+
 
 export const App = () => {
     const [notes, setNotes] = useState([])
@@ -16,6 +20,16 @@ export const App = () => {
             return prevState.filter((item, index) => index !== id)
         })
     }
+
+    useEffect(()=>{
+        const fetchNotes=()=>{
+            axios.get('https://localhost:3001/api/notes').then((response)=>{
+
+            }).catch(error)
+        }
+    },[])
+
+
     return (
         <>
             <Header/>
